@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="static/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container" align="center" style="margin: auto; padding-top: 100px">
+        <form method="post">
+            <h3>Your chances: {{ live }}</h3><br>
+            Type in a number to guess between 1 - 30:
+            <input type="textbox" placeholder="Number to be guessed" name="submitNumb">
+            <input type="submit" value="Submit a Number">
+        </form>
+        <!--<img src="{{ image }}" alt="Error in displaying Pictures">-->
+    </div>
+        {% with wrong = get_flashed_messages(category_filter=["wrong"]) %}
+        {% if wrong %}
+        {% for message in wrong %}
+        <h3 align="center">{{ message }}</h3>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    
+   
+    <footer style="padding-top:300px">
+        <p style="font-size: 12px;">&nbsp;Copyright &copy; Khoa Phan & Hoang Dang</p>
+    </footer>
+{{ number }}
+</body>
+</html>

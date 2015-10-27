@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="static/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="touche" align="center">
+    <h1 align="center" style="padding: 10% 10% 0 10%">Sorry you are incorrect!</h1>
+    <div align="center"><h3>The answer is: {{ number }}</h3></div>
+    <h2 align="center"><a href="{{ newgame }}">Replay ?</a></h2>
+    <img src="static/sad.png" alt="Error in displaying picture">
+    <h2><a href="{{ url_for('logout') }}"> Log Out </a></h2>
+</div>
+
+<footer style="padding-top:200px">
+    <p style="font-size: 12px;">&nbsp;Copyright &copy; Khoa Phan & Hoang Dang</p>
+</footer>
+</body>
+</html>

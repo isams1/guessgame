@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Resister site</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    "user strict";
+   (function animateh1() {
+    $('#title').animate({
+        top:'20px',
+    },1000, function() {
+        $(this).animate({
+            top:'5px'
+        },1000, function() {
+            animateh1();
+        });
+    });
+  }());
+});
+</script>
+<style type="text/css">
+
+  input[type="text"], input[type="password"], input[type="submit"] {
+    margin:10px;
+  }
+
+</style>
+</head>
+<body>
+    <h1 id="title" align="center" style="position:relative;font-size:72px;font-style: normal;font-weight: 600;font-family:source-sans-pro;"> Welcome to our Guess Game </h1>
+    <div class="container" align="center" style="margin: auto; padding-top: 100px">
+        <form method="post" role="form" action="">
+        	{{ form.csrf_token}}
+        	<fieldset> <legend> <h1> Please register to join</h1>  </legend>
+                {{form.username(placeholder="Your username")}}
+        		<br>
+        			 {% if form.username.errors %}
+        			     {% for error in form.username.errors %}
+        			       {{error}}
+        			   {% endfor %}
+        			 {% endif %}
+        	    <br>
+        	    {{form.email(placeholder="Your email")}}
+        	    <br>
+                     {% if form.email.errors %}
+                         {% for error in form.email.errors %}
+                            {{ error }}
+                         {% endfor %}
+                     {% endif %}
+                <br>
+                {{form.password(placeholder="Your password")}}
+                <br>
+                     {% if form.password.errors %}
+                         {% for error in form.password.errors %}
+                            {{ error }}
+                         {% endfor %}
+                     {% endif %}
+                <br>
+                {{form.confirm(placeholder="Re-enter your password")}}
+                <br>
+                     {% if form.email.errors %}
+                         {% for error in form.email.errors %}
+                            {{ error }}
+                         {% endfor %}
+                     {% endif %}
+                <br>
+                <input type="submit" value="Register"/>
+            </fieldset>
+        {% with notes = get_flashed_messages(category_filter=["note"]) %}
+        {% if notes %}
+        {% for msg1 in notes %}
+        {{msg1}}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        </form>
+        
+    </div>
+    {% with goodbyes = get_flashed_messages(category_filter=["goodbye"]) %}
+    {% if goodbyes %}
+    {% for mess in goodbyes %}
+    <h3 align="center" style="color:white">{{ mess }}</h3>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+    <footer style="padding-top:300px">
+        <p style="font-size: 12px;">&nbsp;Copyright &copy; Khoa Phan & Hoang Dang</p>
+    </footer>
+{{ number }}
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="static/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+var main = function() {
+   $('#post').click(function() {
+    var post = $('.status-box').val();
+    $('<li>').text(post).prependTo('.posts');
+    $('.status-box').val('');
+    $('.counter').text('140');
+    $('#post').addClass('disabled').attr('disabled',true); 
+  });
+  
+  $('.status-box').keyup(function() {
+    var postLength = $(this).val().length;
+    var charactersLeft = 140 - postLength;
+    $('.counter').text(charactersLeft);
+  
+    if(charactersLeft < 0) {
+      $('#post').addClass('disabled').attr('disabled',true); 
+    }
+    else if(charactersLeft == 140) {
+      $('#post').addClass('disabled').attr('disabled',true);
+    }
+    else {
+      $('#post').removeClass('disabled').attr('disabled',false);;
+    }
+  });
+  
+  $('#post').addClass('disabled').attr('disabled',true);
+ }
+
+$(document).ready(main);
+</script>
+
+</head>
+<body>
+    <div class="touche" align="center">
+        <h3 style="padding: 10% 10% 0 10%">Congratulations! You have answered correctly and the number is {{ number }}</h3>
+        <h2><a href="{{ newgame }}">Replay ?</a></h2>
+        <img src="static/smiley.jpg" alt="Error in displaying picture">
+        <h2><a href="{{ url_for('logout') }}"> Log Out </a></h2>
+    </div>
+    <br>
+    <div class="comment" style="padding-top:100px;" align="center">
+       <form>
+       	<h3 > Comment </h3>
+    <hr>
+    <br>
+        <div style="padding-top:10px;margin-left:40px;" class="form-group">
+          <textarea class="status-box" rows="5" cols="70" placeholder="What's on your mind?"></textarea>
+          <p style="display:inline;width:50px" class="counter">140</p>
+        <button id="post"  style="display:block;border-radius:50px">Post</button>
+        </div>
+      </form>
+      
+      <ul class="posts">
+      </ul>
+    </div>
+
+    <footer style="padding-top:300px">
+        <p style="font-size: 12px;">&nbsp;Copyright &copy; Khoa Phan & Hoang Dang</p>
+    </footer>
+</body>
+</html>
